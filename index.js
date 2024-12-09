@@ -10,6 +10,7 @@ const {
 
 const run = async () => {
   try {
+    core.debug("Starting action");
     const registry = core.getInput("ecr-registry");
 
     const sha = github.context.sha;
