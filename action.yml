@@ -1,0 +1,44 @@
+name: "Build ECR image"
+description: "Build an ECR image based on a provided Dockerfile"
+inputs:
+  aws-access-key-id:
+    description: "AWS Access Key ID"
+    required: true
+    default: ""
+  aws-secret-access-key:
+    description: "AWS Secret Access Key"
+    required: true
+    default: ""
+  aws-region:
+    description: "AWS Region"
+    required: true
+    default: ""
+  ecr-registry:
+    description: "ECR where the image shoul be hosted"
+    required: true
+    default: ""
+  image-name:
+    description: "Name of the image"
+    required: true
+    default: ""
+  image-tag:
+    description: "Tag for the image"
+    required: false
+    default: "latest"
+  use-sha:
+    description: "Use the SHA of the Dockerfile as the tag"
+    required: false
+    default: false
+  dockerfile-path:
+    description: "Path to the Dockerfile"
+    required: false
+    default: ""
+  outputs:
+    digest:
+      description: "Digest of the image"
+    time-created:
+      description: "Time the image was created"
+
+  runs:
+    using: "node20"
+    main: "dist/index.js"
