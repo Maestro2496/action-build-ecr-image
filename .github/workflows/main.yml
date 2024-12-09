@@ -1,0 +1,23 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: Pushing an image to ECR
+    steps:
+      - name: Build and push an image to ECR
+        id: build
+        uses: Maestro2496/action-build-ecr-image@v1.2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_ID}}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY}}
+          aws-region: ${{ env.AWS_REGION }}
+          ecr-registry: "891377302974.dkr.ecr.us-west-2.amazonaws.com/test/action"
+          image-name: "test/action"
+          image-tag: "v1"
+          use-sha: false
+          dockerfile-path: ""
+
+      # Use the output from the `hello` step
+      - name: Get the digest
+        run: echo "The digest is ${{ steps.build.outputs.digest }}"
