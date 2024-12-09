@@ -33,12 +33,13 @@ inputs:
     description: "Path to the Dockerfile"
     required: false
     default: ""
-  outputs:
-    digest:
-      description: "Digest of the image"
-    time-created:
-      description: "Time the image was created"
 
-  runs:
-    using: "node20"
-    main: "dist/index.js"
+outputs:
+  digest:
+    description: "Digest of the image"
+  time-created:
+    description: "Time the image was created"
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
