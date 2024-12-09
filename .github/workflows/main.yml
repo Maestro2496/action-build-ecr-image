@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Build and push an image to ECR
         id: build
-        uses: Maestro2496/action-build-ecr-image@v1.2
+        uses: Maestro2496/action-build-ecr-image@v1.4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_ID}}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY}}
