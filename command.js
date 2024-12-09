@@ -4,6 +4,7 @@ const {
   ECRClient,
   GetAuthorizationTokenCommand,
 } = require("@aws-sdk/client-ecr");
+const core = require("@actions/core");
 const exec = require("@actions/exec");
 
 const loginToECR = async ({ region, accessId, accessToken, registryId }) => {
@@ -15,7 +16,7 @@ const loginToECR = async ({ region, accessId, accessToken, registryId }) => {
         secretAccessKey: accessToken,
       },
     };
-
+    core.debug(JSON.stringify(config));
     const client = new ECRClient(config);
 
     const getAuthCommand = new GetAuthorizationTokenCommand({

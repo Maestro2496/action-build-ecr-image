@@ -22,7 +22,17 @@ const run = async () => {
     const aws_access_key_id = core.getInput("aws-access-key-id");
     const aws_secret_access_key = core.getInput("aws-secret-access-key");
     const aws_region = core.getInput("aws-region");
-
+    console.log({
+      registry,
+      sha,
+      useSha,
+      tagName,
+      dockerFilePath,
+      imageName,
+      aws_access_key_id,
+      aws_secret_access_key,
+      aws_region,
+    });
     const awsImage = `${registry}:${tagName}`;
 
     const registryId = getRegistryId(registry);
